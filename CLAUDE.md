@@ -470,7 +470,7 @@ git push origin feature/my-feature
 Update checkboxes as each phase is completed and tested.
 
 ```
-[ ] Phase 0  — Infrastructure + Git setup
+[x] Phase 0  — Infrastructure + Git setup
 [ ] Phase 1  — Backend Foundation (NestJS, Prisma, Swagger)
 [ ] Phase 2  — Authentication (register, login, JWT)
 [ ] Phase 3  — Rounds & Matches (CRUD, state machine)
