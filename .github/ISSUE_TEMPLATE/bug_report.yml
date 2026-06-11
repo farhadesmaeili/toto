@@ -1,0 +1,65 @@
+name: 'Bug Report'
+description: 'Report a problem or unexpected behavior'
+title: '[BUG]: '
+labels: ['bug']
+assignees: []
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## Bug Report
+        لطفاً اطلاعات زیر را کامل کنید تا مشکل سریع‌تر بررسی شود.
+
+  - type: textarea
+    id: summary
+    attributes:
+      label: 'Summary'
+      description: 'توضیح کوتاه از مشکل'
+      placeholder: 'مثال: صفحه لاگین بعد از submit خطای 500 می‌دهد'
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: 'Steps to Reproduce'
+      description: 'مراحل بازتولید مشکل'
+      placeholder: |
+        1. برو به صفحه ...
+        2. روی ...
+        3. نتیجه: ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: 'Expected Behavior'
+      description: 'رفتار مورد انتظار'
+      placeholder: 'مثال: باید وارد داشبورد شود'
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual
+    attributes:
+      label: 'Actual Behavior'
+      description: 'رفتار فعلی'
+      placeholder: 'مثال: خطای 500 نمایش داده می‌شود'
+    validations:
+      required: true
+
+  - type: input
+    id: environment
+    attributes:
+      label: 'Environment'
+      description: 'محیط اجرا'
+      placeholder: 'مثال: Chrome / Windows / v1.2.3'
+
+  - type: textarea
+    id: screenshots
+    attributes:
+      label: 'Screenshots / Logs'
+      description: 'اگر اسکرین‌شات یا لاگ داری اینجا بگذار'
+      placeholder: 'لینک تصویر، لاگ، یا توضیح بیشتر'

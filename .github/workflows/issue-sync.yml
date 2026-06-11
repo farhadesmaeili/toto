@@ -1,0 +1,90 @@
+name: Issue Sync
+
+on:
+  issues:
+    types:
+      - opened
+      - edited
+      - labeled
+      - unlabeled
+      - reopened
+
+permissions:
+  issues: write
+  contents: read
+  pull-requests: read
+  # ❌ projects: write  -- این permission در workflow مجاز نیست
+
+jobs:
+  sync-issue:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Add default labels based on issue type
+        uses: actions/github-script@v6
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const issue = context.payload.issue;
+            const labels = issue.labels.map(l => l.name);
+
+            // اگر لیبل bug دارد
+            if (issue.title.toLowerCase().includes('[bug]') && !labels.includes('bug')) {
+              await github.rest.issues.addLabels({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: issue.number,
+                labels: ['bug']
+              });
+            }
+
+            // اگر feature request است
+            if (issue.title.toLowerCase().includes('[feature]') && !labels.includes('enhancement')) {
+              await github.rest.issues.addLabels({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: issue.number,
+                labels: ['enhancement']
+              });
+            }
+
+            // اگر task است
+            if (issue.title.toLowerCase().includes('[task]') && !labels.includes('task')) {
+              await github.rest.issues.addLabels({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: issue.number,
+                labels: ['task']
+              });
+            }
+
+      - name: Comment with workflow guidance
+        uses: actions/github-script@v6
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const issue = context.payload.issue;
+
+            const body = `✅ Issue received and synced.
+
+            ### Next steps
+            - Review the issue details
+            - Assign an owner
+            - Move it to the correct status in GitHub Projects
+            - Update checklist items as work progresses
+
+            ### Auto-detected
+            - Title: ${issue.title}
+            - Number: #${issue.number}
+            - State: ${issue.state}
+            `;
+
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: issue.number,
+              body
+            });

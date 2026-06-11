@@ -1,0 +1,108 @@
+name: 'Internal Task'
+description: 'Internal team task with progress tracking'
+title: '[TASK]: '
+labels: ['internal', 'task']
+assignees: []
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## Internal Task
+        این قالب برای کارهای داخلی تیم است.
+
+  - type: input
+    id: summary
+    attributes:
+      label: 'Summary'
+      description: 'خلاصه کار'
+      placeholder: 'مثال: افزودن pagination به لیست سفارش‌ها'
+    validations:
+      required: true
+
+  - type: textarea
+    id: details
+    attributes:
+      label: 'Details'
+      description: 'توضیحات کامل'
+      placeholder: |
+        - هدف چیست؟
+        - چه بخش‌هایی درگیر هستند؟
+        - وابستگی‌ها چیست؟
+    validations:
+      required: true
+
+  - type: dropdown
+    id: priority
+    attributes:
+      label: 'Priority'
+      description: 'اولویت کار'
+      options:
+        - Low
+        - Medium
+        - High
+        - Urgent
+    validations:
+      required: true
+
+  - type: dropdown
+    id: status
+    attributes:
+      label: 'Status'
+      description: 'وضعیت اولیه'
+      options:
+        - Todo
+        - In Progress
+        - Blocked
+        - Review
+        - Done
+    validations:
+      required: true
+
+  - type: input
+    id: deadline
+    attributes:
+      label: 'Deadline'
+      description: 'زمان مورد انتظار'
+      placeholder: 'مثال: 2026-05-20'
+
+  - type: textarea
+    id: acceptance_criteria
+    attributes:
+      label: 'Acceptance Criteria'
+      description: 'معیارهای پذیرش'
+      placeholder: |
+        - [ ] مورد اول
+        - [ ] مورد دوم
+        - [ ] تست‌ها پاس شوند
+    validations:
+      required: true
+
+  - type: textarea
+    id: subtasks
+    attributes:
+      label: 'Sub-tasks'
+      description: 'کارهای خرد را با checklist بنویس'
+      placeholder: |
+        - [ ] طراحی
+        - [ ] توسعه
+        - [ ] تست
+        - [ ] review
+    validations:
+      required: true
+
+  - type: textarea
+    id: links
+    attributes:
+      label: 'Related Links'
+      description: 'لینک‌های مرتبط'
+      placeholder: |
+        - #123
+        - Figma link
+        - Docs link
+
+  - type: textarea
+    id: notes
+    attributes:
+      label: 'Notes'
+      description: 'نکات اضافی'

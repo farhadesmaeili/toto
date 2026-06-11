@@ -1,0 +1,44 @@
+name: 'Feature Request'
+description: 'Suggest a new feature or improvement'
+title: '[FEATURE]: '
+labels: ['enhancement']
+assignees: []
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## Feature Request
+        لطفاً نیاز و دلیل آن را واضح توضیح بده.
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: 'Problem / Need'
+      description: 'چه مشکلی وجود دارد یا چه نیازی هست؟'
+      placeholder: 'مثال: کاربران نمی‌توانند محصولات را سریع فیلتر کنند'
+    validations:
+      required: true
+
+  - type: textarea
+    id: solution
+    attributes:
+      label: 'Proposed Solution'
+      description: 'راه‌حل پیشنهادی'
+      placeholder: 'مثال: اضافه کردن فیلتر بر اساس قیمت و دسته‌بندی'
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: 'Alternatives Considered'
+      description: 'راه‌حل‌های دیگر بررسی‌شده'
+      placeholder: 'مثال: استفاده از search ساده یا tagها'
+
+  - type: textarea
+    id: benefits
+    attributes:
+      label: 'Benefits'
+      description: 'این قابلیت چه فایده‌ای دارد؟'
+      placeholder: 'مثال: سرعت کاربر بالا می‌رود و نرخ تبدیل بهتر می‌شود'
